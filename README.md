@@ -1,180 +1,232 @@
 # ttn-first-steps
 Primeiros passos para o uso da plataforma The Things Network
 
+Este é um guia iniciante para o uso da TTN. Usando o módulo [The Things UNO](https://www.thethingsnetwork.org/docs/devices/uno/) será construido um dispositipo capaz de realizar UPLINK com um sensor de temperatuda e DOWNLINK usando um LED.
 
+Pré requisitos:
+- Conhecimento básico em programação e Arduino
+- Login na pltaforma The Things Network
+- Cobertura LoRa
 
-Voce precisa ter um login na TTN e um gateway lora (olha aqui como fazer um)
-
-Logado a plataforma The Things Network
+O guia está dividido em:
 
 1 - Adicionar uma aplicação
+2 - Adicionar Device
+    2.1 - Instalar a IDE Arduino
+        2.1.1 - Adicionar biblioteca The Things Network
+    2.2 - Descobrir o Device EUI
+        2.2.1 - Registrar o Device na aplicação
+3 - Desenvolver uma aplicação
+    3.1 - Prototipagem
+    3.2 - Programação
+        3.2.1 - UPLINK
+        3.2.2 - DOWNLINK
+        
+## 1 - Adicionar uma aplicação
 
-Console -> Application -> add aplication
+Logado a The Things Network vá até Console -> Application -> add aplication, e preencha os campos da seguinte tela:
 
-Preencher 
+![add_aplication]()
+
 - Application ID: 
 Identificação para a sua aplicação.
 
 - Description:
-Descrição da mesma.
+Descrição da aplicação.
 
 - Handler registration: 
-É recomendado escolher o cluster de rede mais próximo dos gateways e colocar seu servidor de aplicativos próximo ao cluster. Isso minimiza a latência da rede.
-Todos os clusters indicados no console como "públicos" fazem parte da rede comunitária pública. Os clusters com prefixos “ttn” são operados pela The Things Network Foundation, outros são operados por parceiros.
+De acordo com a TTN é recomendado escolher o cluster de rede mais próximo dos gateways e colocar seu servidor de aplicativos próximo ao cluster. Isso minimiza a latência da rede. Os clusters com prefixos “ttn” são operados pela The Things Network Foundation, outros são operados por parceiros.
 
-2 - Adicionar Device
+## 2 - Adicionar Device
 
-Dentro da aplicação criada ...
+Dentro da aplicação criada deve ser adicionado um Device.
 
-![imagem]
+![application_overview]()
 
-Como pode ser visto na imagem acima para fazer o registro de um DEVICE é necessário um "Device EUI". Essa informação está atrelada ao dispositivo usado. 
+![devices]()
+
+![register_device]()
+
+Como pode ser visto na imagem acima para fazer o registro de um DEVICE é necessário um *Device EUI*. Essa informação é um número que deve estar atrelado ao dispositivo. No caso do The Things UNO o EUI pode ser recuperado.
 
 Para continar o tutorial é necessário ter a IDE do Arduino istalada ao computador, bem como a biblioteca The Thihgs Network na mesma.
 
-2.1 - [Instalar da IDE Arduino]
+### 2.1 - [Instalar a IDE Arduino](https://www.arduino.cc/en/main/software)
 
-2.2 - Adicionar biblioteca The Things Network
+### 2.2 - Adicionar biblioteca The Things Network
 
 Na IDE vá até Sketch -> Incluir Biblioteca -> Gerenciar Bibliotecas, procure por TheThingsNetwork e realize a instalação.
 
-![imagem]
+![biblioteca]()
 
-2.3 - Descobrir o Device EUI
+### 2.3 - Descobrir o *Device EUI*
 
 Em: Arquivo -> Exemplos -> TheThingsNetwork selecione DeviceInfo.
 
+Esse código tem como função retornar iformações sobre o dispositivo, sendo uma delas o *Device EUI*
+
 Dentro do código substitua o plano de frequência utilizado como destacado, de *REPLACE_ME* por *TTN_FP_US915*.
-Com o dispositivo conectado ao computador procure em Ferramentas pela porta onde está conectado e selecione a placa "Arduino Leonardo".
+
+Com o dispositivo conectado ao computador procure em Ferramentas pela porta onde está conectado e selecione a placa *Arduino Leonardo*.
 
 Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
-![imagem] 
+![serial]() 
 
-Como resultado a serial deve mostrar diversas informações sobre o dispositivo, uma delas será o *Devide EUI*, mostrado como *Dev EUI*.
+Como resultado a serial deve mostrar diversas informações sobre o dispositivo e uma delas será o *Devide EUI*, mostrado como *Dev EUI*.
 
-![imagem]
+![deveui]()
 
-2.4 - Registrar o Device na aplicação
+### 2.4 - Registrar o Device na aplicação
 
 Voltando ao console da TTN e preenchidos os campos:
 
-Device ID: 
+- Device ID: 
 Identificação para o seu device.
 
-Device EUI:
+- Device EUI:
 Número capturado através do monitor serial.
 
 O device estará registrado.
 
-3 - Desenvolver uma aplicação
+## 3 - Desenvolver uma aplicação
 
 Com o device registrado é possível montar uma aplicação para o mesmo. 
-O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura) para UPLINK de dados e um LED para demonstrar o DOWNLINK.
 
-3.1 - Protitipagem
+O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura) para UPLINK de dados e um LED para o DOWNLINK.
 
-- Materiais utilizados
+### 3.1 - Protitipagem
 
-The TheThings UNO
-Protoboard
-Sensor NTC - temperatura
-1 resistor 10kΩ
-1 resistor 300Ω
-LED
+#### Materiais utilizados
 
-- Esquemático
+* The TheThings UNO + cabo USB
+* Sensor NTC (temperatura)
+* 1 resistor 10kΩ
+* 1 resistor 300Ω
+* Protoboard
+* Jumpers
+* LED
 
-![imagem]
+#### Esquemático
+
+![esuqematico]()
 
 > O esquemático mostra um ARDUINO LEONARDO mas está sendo utilizado um módulo The Things UNO!
 
-3.2 - Código
+### 3.2 - Programação
 
 Na IDE, partindo do exemplo de código *QuickStart* que encontra-se em Arquivo -> Exemplos -> TheThingsNetwork é possível adaptá-lo para a necessidade da aplicação sugerida. 
 
 No console, junto às informações do device, no final da página estarão *appEui* e *appKey*. Esses dois números deverão substituir as linhas 4 e 5 do exemplo *Quickstart*.
 
-![imagem]
+![example_code]()
 
 Não esqueça de substituir, assim como no código DeviceInfo, o plano de frequência utilizado. 
 
-3.2.1 - UPLINK
+#### 3.2.1 - UPLINK
 
 Dentro do código, insira conforme a necessidade as linhas para o uso o sensor de temperatura.
 
 A sugestão é de que sejam incluidos:
 
-- Declaração do pino utulizado pelo sensor
-    #define Sensor A0
+- Declaração do pino utulizado pelo sensor 
+```c
+#define Sensor A0
+```
 
 - Comentar a seguinte linha em *void setup()*
+```c
     ttn.onMessage(message);
+```
 
 - Leitura do valor do sensor e print na serial dentro de *void loop()*
+```c
+    int ValorSensor = analogRead(Sensor);
+    int Temp = (ValorSensor*0.2027)-82;
 
-  int ValorSensor = analogRead(Sensor);
-  int Temp = (ValorSensor*0.2027)-82;
-
-  debugSerial.print("Temperatura:");
-  debugSerial.print(Temp);
-  debugSerial.println("ºC");
+    debugSerial.print("Temperatura:");
+    debugSerial.print(Temp);
+    debugSerial.println("ºC");
+```
 
 - Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura.
-    de: payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
-    para: payload[0] = Temp;
-
+    de: 
+    ```c
+     payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
+    ```
+    para: 
+    ```c
+     payload[0] = Temp;
+    ```
 mantendo as demais linhas em *void loop()*
 
 A função *message* pode ser completamente comentada, ela será usada no DOWNLINK.
 
 Procure em Ferramentas pela porta onde o dispositivo está conectado e selecione a placa "Arduino Leonardo". Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
-Esse deve ser o resultado: 
+Esse deve ser o resultado no monitor serial: 
 
-![imagem]
+![serial_join]()
+
+São mostrados os canais sendo *setados*, *join* e a confirmação da transmissão.
 
 O console da aplicação também mostra os dados de UPLINK em *Data*. Porém de forma ilegivel através de bytes.
 
-![imagem]
+![---]()
 
 Para uma melhor visualização esses dados podem ser tratados na aba *Payload Formats* dentro da aplicação. 
 
-![imagem]
+![payload_formats]()
 
 Esse tratamento pode ser feito usando JavaScript, como no código a seguir.
 
-![imagem]
+![decoder]()
 
-3.2.1 - DOWNLINK
+Dessa forma o *payload* pode ser visto de forma legível no console.
+
+![---]()
+
+#### 3.2.2 - DOWNLINK
 
 Do mesmo modo como feito com sensor, algumas linhas devem ser adicionadas ao código para o uso do LED. Sendo elas: 
 
 - Definição do pino do LED
-    #define Led 13
+```c
+    const int Led = 13;
+```
 
 - Declaração do LED como saída no *void setup()*
-    pinMode(Led, OUTPUT);  
+```c
+    pinMode(Led, OUTPUT);
+```  
 
 - Descomentar a linha
+```c
     ttn.onMessage(message);
+``` 
 
-ela será responsável por invocar a função que acenderá o LED quando um byte 0 for enviado pelo console.
+ela será responsável por invocar a função que acenderá o LED quando um byte 1 for enviado pelo console.
 
 - A função *message* deve ser completamente descomentada
 
-- As linhas com *digitalWrite* deverão apontar para o LED decladado
-de: digitalWrite(LED_BUILTIN, LOW);
+- As linhas com *digitalWrite* deverão apontar para o LED decladado, de nome *Led*
+de:
+    ```c
+    digitalWrite(LED_BUILTIN, LOW);
     digitalWrite(LED_BUILTIN, HIGH);
-para: digitalWrite(Led, LOW);
+    ``` 
+para: 
+    ```c
+    digitalWrite(Led, LOW);
     digitalWrite(Led, HIGH);
+    ``` 
 
 > LED_BUILTIN trata-se do próprio LED embutido na placa, ele pode ser usado se preferível.
 
 A mensagem de DOWNLINK pode ser enviada pelo console do device em *DOWNLINK* como na imagem.
 
-![imagem]
+![downlink]()
 
-Assim que enviado um byte *11* for enviado o LED deve acender e apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
+Assim que enviado um byte *11* for enviado o LED deve acender e  de forma contrária, apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
 
 
