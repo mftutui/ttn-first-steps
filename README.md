@@ -162,7 +162,7 @@ debugSerial.println("ºC");
 - Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura.
     de: 
 ```c
-payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
+˜payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;˜
 ```
 para: 
 ```c
@@ -222,8 +222,8 @@ ela será responsável por invocar a função que acenderá o LED quando um byte
 - As linhas com *digitalWrite* deverão apontar para o LED decladado, de nome *Led*
 de:
 ```c
-digitalWrite(LED_BUILTIN, LOW);
-digitalWrite(LED_BUILTIN, HIGH);
+˜digitalWrite(LED_BUILTIN, LOW);˜
+digitalWrite(LED_BUILTIN, HIGH);˜
 ``` 
 para: 
 ```c
