@@ -26,7 +26,7 @@ O guia está dividido em:
 
 Logado a The Things Network vá até Console -> Application -> add aplication, e preencha os campos da seguinte tela:
 
-![add_aplication]()
+![add_aplication](https://github.com/mftutui/ttn-first-steps/blob/master/images/add_aplication.png)
 
 - Application ID: 
 Identificação para a sua aplicação.
@@ -41,11 +41,11 @@ De acordo com a TTN é recomendado escolher o cluster de rede mais próximo dos 
 
 Dentro da aplicação criada deve ser adicionado um Device.
 
-![application_overview]()
+![application_overview](https://github.com/mftutui/ttn-first-steps/blob/master/images/application_overview.png)
 
-![devices]()
+![devices](https://github.com/mftutui/ttn-first-steps/blob/master/images/devices.png)
 
-![register_device]()
+![register_device](https://github.com/mftutui/ttn-first-steps/blob/master/images/register_device.png)
 
 Como pode ser visto na imagem acima para fazer o registro de um DEVICE é necessário um *Device EUI*. Essa informação é um número que deve estar atrelado ao dispositivo. No caso do The Things UNO o EUI pode ser recuperado.
 
@@ -57,7 +57,7 @@ Para continar o tutorial é necessário ter a IDE do Arduino istalada ao computa
 
 Na IDE vá até Sketch -> Incluir Biblioteca -> Gerenciar Bibliotecas, procure por TheThingsNetwork e realize a instalação.
 
-![biblioteca]()
+![biblioteca](https://github.com/mftutui/ttn-first-steps/blob/master/images/biblioteca.png)
 
 ### 2.3 - Descobrir o *Device EUI*
 
@@ -71,11 +71,11 @@ Com o dispositivo conectado ao computador procure em Ferramentas pela porta onde
 
 Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
-![serial]() 
+![serial](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial.png) 
 
 Como resultado a serial deve mostrar diversas informações sobre o dispositivo e uma delas será o *Devide EUI*, mostrado como *Dev EUI*.
 
-![deveui]()
+![deveui](https://github.com/mftutui/ttn-first-steps/blob/master/images/deveui.png)
 
 ### 2.4 - Registrar o Device na aplicação
 
@@ -109,7 +109,7 @@ O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura
 
 #### Esquemático
 
-![esuqematico]()
+![esuqematico](https://github.com/mftutui/ttn-first-steps/blob/master/images/esuqematico.png)
 
 > O esquemático mostra um ARDUINO LEONARDO mas está sendo utilizado um módulo The Things UNO!
 
@@ -119,7 +119,7 @@ Na IDE, partindo do exemplo de código *QuickStart* que encontra-se em Arquivo -
 
 No console, junto às informações do device, no final da página estarão *appEui* e *appKey*. Esses dois números deverão substituir as linhas 4 e 5 do exemplo *Quickstart*.
 
-![example_code]()
+![serial_join](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial_join.png)
 
 Não esqueça de substituir, assim como no código DeviceInfo, o plano de frequência utilizado. 
 
@@ -136,28 +136,28 @@ A sugestão é de que sejam incluidos:
 
 - Comentar a seguinte linha em *void setup()*
 ```c
-    ttn.onMessage(message);
+ttn.onMessage(message);
 ```
 
 - Leitura do valor do sensor e print na serial dentro de *void loop()*
 ```c
-    int ValorSensor = analogRead(Sensor);
-    int Temp = (ValorSensor*0.2027)-82;
+int ValorSensor = analogRead(Sensor);
+int Temp = (ValorSensor*0.2027)-82;
 
-    debugSerial.print("Temperatura:");
-    debugSerial.print(Temp);
-    debugSerial.println("ºC");
+debugSerial.print("Temperatura:");
+debugSerial.print(Temp);
+debugSerial.println("ºC");
 ```
 
 - Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura.
     de: 
-    ```c
-     payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
-    ```
-    para: 
-    ```c
-     payload[0] = Temp;
-    ```
+```c
+payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
+```
+para: 
+```c
+payload[0] = Temp;
+```
 mantendo as demais linhas em *void loop()*
 
 A função *message* pode ser completamente comentada, ela será usada no DOWNLINK.
@@ -166,7 +166,7 @@ Procure em Ferramentas pela porta onde o dispositivo está conectado e selecione
 
 Esse deve ser o resultado no monitor serial: 
 
-![serial_join]()
+![serial_join](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial_join.png)
 
 São mostrados os canais sendo *setados*, *join* e a confirmação da transmissão.
 
@@ -176,11 +176,11 @@ O console da aplicação também mostra os dados de UPLINK em *Data*. Porém de 
 
 Para uma melhor visualização esses dados podem ser tratados na aba *Payload Formats* dentro da aplicação. 
 
-![payload_formats]()
+![payload_formats](https://github.com/mftutui/ttn-first-steps/blob/master/images/payload_formats.png)
 
 Esse tratamento pode ser feito usando JavaScript, como no código a seguir.
 
-![decoder]()
+![decoder](https://github.com/mftutui/ttn-first-steps/blob/master/images/decoder.png)
 
 Dessa forma o *payload* pode ser visto de forma legível no console.
 
@@ -192,17 +192,17 @@ Do mesmo modo como feito com sensor, algumas linhas devem ser adicionadas ao có
 
 - Definição do pino do LED
 ```c
-    const int Led = 13;
+const int Led = 13;
 ```
 
 - Declaração do LED como saída no *void setup()*
 ```c
-    pinMode(Led, OUTPUT);
+pinMode(Led, OUTPUT);
 ```  
 
 - Descomentar a linha
 ```c
-    ttn.onMessage(message);
+ttn.onMessage(message);
 ``` 
 
 ela será responsável por invocar a função que acenderá o LED quando um byte 1 for enviado pelo console.
@@ -211,21 +211,21 @@ ela será responsável por invocar a função que acenderá o LED quando um byte
 
 - As linhas com *digitalWrite* deverão apontar para o LED decladado, de nome *Led*
 de:
-    ```c
-    digitalWrite(LED_BUILTIN, LOW);
-    digitalWrite(LED_BUILTIN, HIGH);
-    ``` 
+```c
+digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, HIGH);
+``` 
 para: 
-    ```c
-    digitalWrite(Led, LOW);
-    digitalWrite(Led, HIGH);
-    ``` 
+```c
+digitalWrite(Led, LOW);
+digitalWrite(Led, HIGH);
+``` 
 
 > LED_BUILTIN trata-se do próprio LED embutido na placa, ele pode ser usado se preferível.
 
 A mensagem de DOWNLINK pode ser enviada pelo console do device em *DOWNLINK* como na imagem.
 
-![downlink]()
+![downlink](https://github.com/mftutui/ttn-first-steps/blob/master/images/downlink.png)
 
 Assim que enviado um byte *11* for enviado o LED deve acender e  de forma contrária, apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
 
