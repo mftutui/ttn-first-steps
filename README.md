@@ -10,7 +10,7 @@ Pré requisitos:
 
 O guia está dividido em:
 
-1 - Adicionar uma aplicação
+[1 - Adicionar uma aplicação](1 - Adicionar uma aplicação)
 2 - Adicionar Device
     2.1 - Instalar a IDE Arduino
         2.1.1 - Adicionar biblioteca The Things Network
@@ -109,7 +109,7 @@ O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura
 
 #### Esquemático
 
-![esuqematico](https://github.com/mftutui/ttn-first-steps/blob/master/images/esuqematico.png)
+![esquematico](https://github.com/mftutui/ttn-first-steps/blob/master/images/esquematico.png)
 
 > O esquemático mostra um ARDUINO LEONARDO mas está sendo utilizado um módulo The Things UNO!
 
