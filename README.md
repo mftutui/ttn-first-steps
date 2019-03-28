@@ -10,7 +10,7 @@ Pré requisitos:
 
 O guia está dividido em:
 
-[1 - Adicionar uma aplicação](1 - Adicionar uma aplicação)
+[1 - Adicionar uma aplicação](#1 - Adicionar uma aplicação)
 2 - Adicionar Device
     2.1 - Instalar a IDE Arduino
         2.1.1 - Adicionar biblioteca The Things Network
