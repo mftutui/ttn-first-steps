@@ -11,26 +11,16 @@ Pré requisitos:
 O guia está dividido em:
 
 [1 - Adicionar uma aplicação](#1-Adicionar-uma-aplicação)
-
 [2 - Adicionar Device](#2-Adicionar-Device)
-
     [2.1 - Instalar a IDE Arduino](#2.1-Instalar-a-IDE-Arduino)
-    
         [2.1.1 - Adicionar biblioteca The Things Network](#2.1.1-Adicionar-biblioteca-The-Things-Network)
-        
     [2.2 - Descobrir o Device EUI](#2.2-Descobrir-o-Device-EUI)
-    
-        [2.2.1 - Registrar o Device na aplicação](#2.2.1-Registrar-o-Device-na-aplicação)
-        
-3 - Desenvolver uma aplicação
-
-    3.1 - Prototipagem
-    
-    3.2 - Programação
-    
-        3.2.1 - UPLINK
-        
-        3.2.2 - DOWNLINK
+        [2.2.1 - Registrar o Device na aplicação](#2.2.1-Registrar-o-Device-na-aplicação) 
+[3 - Desenvolver uma aplicação](#3-Desenvolver-uma-aplicação)
+    [3.1 - Prototipagem](#3.1-Prototipagem)
+    [3.2 - Programação](#3.2-Programação)
+        [3.2.1 - UPLINK](#3.2.1-UPLINK)
+        [3.2.2 - DOWNLINK](#3.2.2-DOWNLINK)
         
 ## 1 - Adicionar uma aplicação
 
