@@ -10,102 +10,106 @@ Pré requisitos:
 
 O guia está dividido em:
 
-[1 - Adicionar uma aplicação](#1-Adicionar-uma-aplicação)
+1. [Adicionar uma aplicação](#Adicionar-uma-aplicação)
 
-[2 - Adicionar Device](#2-Adicionar-Device)
+2. [Adicionar Device](#Adicionar-Device)
 
-[2.1 - Instalar a IDE Arduino](#2.1-Instalar-a-IDE-Arduino)
+	1. [Instalar a IDE Arduino](#Instalar-a-IDE-Arduino)
 
-[2.1.1 - Adicionar biblioteca The Things Network](#2.1.1-Adicionar-biblioteca-The-Things-Network)
+	2. [Adicionar biblioteca The Things Network](#Adicionar-biblioteca-The-Things-Network)
 
-[2.2 - Descobrir o Device EUI](#2.2-Descobrir-o-Device-EUI)
+	3. [Descobrir o Device EUI](#Descobrir-o-Device-EUI)
 
-[2.2.1 - Registrar o Device na aplicação](#2.2.1-Registrar-o-Device-na-aplicação) 
+	4. [Registrar o Device na aplicação](#Registrar-o-Device-na-aplicação) 
 
-[3 - Desenvolver uma aplicação](#3-Desenvolver-uma-aplicação)
+3. [Desenvolver uma aplicação](#3Desenvolver-uma-aplicação)
 
-[3.1 - Prototipagem](#3.1-Prototipagem)
+	1. [Prototipagem](#Prototipagem)
 
-[3.2 - Programação](#3.2-Programação)
+	2. [Programação](#Programação)
 
-[3.2.1 - UPLINK](#3.2.1-UPLINK)
+		1. [UPLINK](#UPLINK)
 
-[3.2.2 - DOWNLINK](#3.2.2-DOWNLINK)
+		2. [DOWNLINK](#DOWNLINK)
         
-## 1 - Adicionar uma aplicação
+## Adicionar uma aplicação
 
-Logado a The Things Network vá até Console -> Application -> add aplication, e preencha os campos da seguinte tela:
+Logado a The Things Network vá até **Console** > **Application** > **add aplication**, e preencha os campos da seguinte tela:
 
 ![add_aplication](https://github.com/mftutui/ttn-first-steps/blob/master/images/add_aplication.png)
 
-- Application ID: 
+- **Application ID**: 
 Identificação para a sua aplicação.
 
-- Description:
+- **Description**:
 Descrição da aplicação.
 
-- Handler registration: 
+- **Handler registration**: 
 De acordo com a TTN é recomendado escolher o cluster de rede mais próximo dos gateways e colocar seu servidor de aplicativos próximo ao cluster. Isso minimiza a latência da rede. Os clusters com prefixos “ttn” são operados pela The Things Network Foundation, outros são operados por parceiros.
 
-## 2 - Adicionar Device
+## Adicionar Device
 
-Dentro da aplicação criada deve ser adicionado um Device.
+Dentro da aplicação criada deve ser adicionado um Device. Procure por **register device**:
 
 ![application_overview](https://github.com/mftutui/ttn-first-steps/blob/master/images/application_overview.png)
 
+Adicione um device clicando em **register device**:
+
 ![devices](https://github.com/mftutui/ttn-first-steps/blob/master/images/devices.png)
+
+A tela para o registro do device aparecerá:
 
 ![register_device](https://github.com/mftutui/ttn-first-steps/blob/master/images/register_device.png)
 
-Como pode ser visto na imagem acima para fazer o registro de um DEVICE é necessário um *Device EUI*. Essa informação é um número que deve estar atrelado ao dispositivo. No caso do The Things UNO o EUI pode ser recuperado.
+Como pode ser visto na imagem acima para fazer o registro de um DEVICE é necessário um **Device EUI**. Essa informação é um número que deve estar atrelado ao dispositivo. No caso do The Things UNO o EUI pode ser recuperado.
 
 Para continar o tutorial é necessário ter a IDE do Arduino istalada ao computador, bem como a biblioteca The Thihgs Network na mesma.
 
-### 2.1 - [Instalar a IDE Arduino](https://www.arduino.cc/en/main/software)
+### [Instalar a IDE Arduino](https://www.arduino.cc/en/main/software)
 
-### 2.2 - Adicionar biblioteca The Things Network
+### Adicionar biblioteca The Things Network
 
-Na IDE vá até Sketch -> Incluir Biblioteca -> Gerenciar Bibliotecas, procure por TheThingsNetwork e realize a instalação.
+Na IDE vá até **Sketch** > **Incluir Biblioteca** > **Gerenciar Bibliotecas**, procure por **TheThingsNetwork** e realize a instalação.
 
 ![biblioteca](https://github.com/mftutui/ttn-first-steps/blob/master/images/biblioteca.png)
 
-### 2.3 - Descobrir o *Device EUI*
+### Descobrir o *Device EUI*
 
-Em: Arquivo -> Exemplos -> TheThingsNetwork selecione DeviceInfo.
+Em: **Arquivo** > **Exemplos** > **TheThingsNetwork** selecione **DeviceInfo**.
 
-Esse código tem como função retornar iformações sobre o dispositivo, sendo uma delas o *Device EUI*
+Esse código tem como função retornar iformações sobre o dispositivo, sendo uma delas o **Device EUI**
 
 Dentro do código substitua o plano de frequência utilizado como destacado, de *REPLACE_ME* por *TTN_FP_US915*.
 
-Com o dispositivo conectado ao computador procure em Ferramentas pela porta onde está conectado e selecione a placa *Arduino Leonardo*.
+Com o dispositivo conectado ao computador procure em *Ferramentas* pela porta onde está conectado e selecione a placa *Arduino Leonardo*.
 
 Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
 ![serial](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial.png) 
 
-Como resultado a serial deve mostrar diversas informações sobre o dispositivo e uma delas será o *Devide EUI*, mostrado como *Dev EUI*.
+Como resultado a serial deve mostrar diversas informações sobre o dispositivo e uma delas será o **Device EUI**, mostrado como *Dev EUI*.
 
 ![deveui](https://github.com/mftutui/ttn-first-steps/blob/master/images/deveui.png)
 
-### 2.4 - Registrar o Device na aplicação
+### Registrar o Device na aplicação
 
 Voltando ao console da TTN e preenchidos os campos:
 
-- Device ID: 
+- **Device ID**: 
 Identificação para o seu device.
 
-- Device EUI:
+- **Device EUI**:
 Número capturado através do monitor serial.
 
-O device estará registrado.
+O device estará registrado!
 
-## 3 - Desenvolver uma aplicação
+## Desenvolver uma aplicação
 
 Com o device registrado é possível montar uma aplicação para o mesmo. 
 
 O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura) para UPLINK de dados e um LED para o DOWNLINK.
 
-### 3.1 - Protitipagem
+### Protitipagem
 
 #### Materiais utilizados
 
@@ -123,23 +127,23 @@ O exemplo a seguir demonstrará a captura de dados de um sensor NTC (temperatura
 
 > O esquemático mostra um ARDUINO LEONARDO mas está sendo utilizado um módulo The Things UNO!
 
-### 3.2 - Programação
+### Programação
 
-Na IDE, partindo do exemplo de código *QuickStart* que encontra-se em Arquivo -> Exemplos -> TheThingsNetwork é possível adaptá-lo para a necessidade da aplicação sugerida. 
+Na IDE, partindo do exemplo de código **QuickStart** que encontra-se em **Arquivo** > **Exemplos** > **TheThingsNetwork** é possível adaptá-lo para a necessidade da aplicação sugerida. 
 
-No console, junto às informações do device, no final da página estarão *appEui* e *appKey*. Esses dois números deverão substituir as linhas 4 e 5 do exemplo *Quickstart*.
+No console, junto às informações do device, no final da página estarão *appEui* e *appKey*. Esses dois números deverão substituir as linhas 4 e 5 do exemplo **QuickStart**.
 
 ![serial_join](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial_join.png)
 
-Não esqueça de substituir, assim como no código DeviceInfo, o plano de frequência utilizado. 
+Não esqueça de substituir, assim como no código *DeviceInfo*, o plano de frequência utilizado. 
 
-#### 3.2.1 - UPLINK
+#### UPLINK
 
 Dentro do código, insira conforme a necessidade as linhas para o uso o sensor de temperatura.
 
 A sugestão é de que sejam incluidos:
 
-- Declaração do pino utulizado pelo sensor 
+- Declaração do pino utulizado pelo sensor
 ```c
 #define Sensor A0
 ```
@@ -153,13 +157,12 @@ ttn.onMessage(message);
 ```c
 int ValorSensor = analogRead(Sensor);
 int Temp = (ValorSensor*0.2027)-82;
-
 debugSerial.print("Temperatura:");
 debugSerial.print(Temp);
 debugSerial.println("ºC");
 ```
 
-- Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura.
+- Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura
     de: 
 ```c
 ˜payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;˜
@@ -196,7 +199,7 @@ Dessa forma o *payload* pode ser visto de forma legível no console.
 
 ![---]()
 
-#### 3.2.2 - DOWNLINK
+#### DOWNLINK
 
 Do mesmo modo como feito com sensor, algumas linhas devem ser adicionadas ao código para o uso do LED. Sendo elas: 
 
@@ -214,7 +217,6 @@ pinMode(Led, OUTPUT);
 ```c
 ttn.onMessage(message);
 ``` 
-
 ela será responsável por invocar a função que acenderá o LED quando um byte 1 for enviado pelo console.
 
 - A função *message* deve ser completamente descomentada
@@ -237,6 +239,4 @@ A mensagem de DOWNLINK pode ser enviada pelo console do device em *DOWNLINK* com
 
 ![downlink](https://github.com/mftutui/ttn-first-steps/blob/master/images/downlink.png)
 
-Assim que enviado um byte *11* for enviado o LED deve acender e  de forma contrária, apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
-
-
+Assim que for enviado um byte *11* o LED deve acender e de forma contrária, apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
