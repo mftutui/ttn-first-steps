@@ -4,9 +4,9 @@ Primeiros passos para o uso da plataforma The Things Network
 Este é um guia iniciante para o uso da TTN. Usando o módulo [The Things UNO](https://www.thethingsnetwork.org/docs/devices/uno/) será construido um dispositipo capaz de realizar UPLINK com um sensor de temperatura e DOWNLINK usando um LED.
 
 ### Importante
-📗 Leia o material todo antes de começar.
+📗 Leia o material todo antes de começar
 
-☺️ Caso encontre algum erro, tenha alguma sugestão ou dúvida fique a vontade para entrar em contato.
+☺️ Caso encontre algum erro, tenha alguma sugestão ou dúvida fique a vontade para entrar em contato
 
 ### Requisitos
 * Login em [The Things Network](https://www.thethingsnetwork.org/)
