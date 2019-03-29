@@ -83,6 +83,8 @@ Na IDE vá até **Sketch** > **Incluir Biblioteca** > **Gerenciar Bibliotecas**,
 
 Em: **Arquivo** > **Exemplos** > **TheThingsNetwork** selecione **DeviceInfo**.
 
+> [DeviceInfo](https://github.com/mftutui/ttn-first-steps/codes/DeviceInfo.ino)
+
 Esse código tem como função retornar iformações sobre o dispositivo, sendo uma delas o **Device EUI**
 
 Dentro do código substitua o plano de frequência utilizado como destacado, de *REPLACE_ME* por *TTN_FP_US915*.
@@ -143,6 +145,8 @@ No console, junto às informações do device, no final da página estarão *app
 
 Não esqueça de substituir, assim como no código *DeviceInfo*, o plano de frequência utilizado. 
 
+> [QuickStart](https://github.com/mftutui/ttn-first-steps/codes/QuickStart.ino)
+
 #### UPLINK
 
 Dentro do código, insira conforme a necessidade as linhas para o uso o sensor de temperatura.
@@ -169,9 +173,10 @@ debugSerial.println("ºC");
 ```
 
 - Substituição do envio do byte dado pelo exemplo pelo byte capturado com a temperarura
-    de: 
+
+de: 
 ```c
-˜payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;˜
+payload[0] = (digitalRead(LED_BUILTIN) == HIGH) ? 1 : 0;
 ```
 para: 
 ```c
@@ -180,6 +185,8 @@ payload[0] = Temp;
 mantendo as demais linhas em *void loop()*
 
 A função *message* pode ser completamente comentada, ela será usada no DOWNLINK.
+
+> [Código UPLINK](https://github.com/mftutui/ttn-first-steps/codes/UPLINK.ino)
 
 Procure em Ferramentas pela porta onde o dispositivo está conectado e selecione a placa "Arduino Leonardo". Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
@@ -228,21 +235,24 @@ ela será responsável por invocar a função que acenderá o LED quando um byte
 - A função *message* deve ser completamente descomentada
 
 - As linhas com *digitalWrite* deverão apontar para o LED decladado, de nome *Led*
+
 de:
 ```c
-˜digitalWrite(LED_BUILTIN, LOW);˜
-digitalWrite(LED_BUILTIN, HIGH);˜
+digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_BUILTIN, HIGH);
 ``` 
 para: 
 ```c
 digitalWrite(Led, LOW);
 digitalWrite(Led, HIGH);
-``` 
+```
 
-> LED_BUILTIN trata-se do próprio LED embutido na placa, ele pode ser usado se preferível.
+> LED_BUILTIN trata-se do próprio LED embutido na placa, ele pode ser usado se preferir
+
+> [Código DOWNLINK](https://github.com/mftutui/ttn-first-steps/codes/DOWNLINK.ino)
 
 A mensagem de DOWNLINK pode ser enviada pelo console do device em *DOWNLINK* como na imagem.
 
 ![downlink](https://github.com/mftutui/ttn-first-steps/blob/master/images/downlink.png)
 
-Assim que for enviado um byte *11* o LED deve acender e de forma contrária, apagar quando enviado um byte *00*. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.
+Assim que for enviado um byte **11** o LED deve acender e de forma contrária, apagar quando enviado um byte **00**. As mensagens o status do LED podem ser vistas também no monitor serial da IDE.

@@ -1,0 +1,81 @@
+#include <TheThingsNetwork.h>
+
+// Set your AppEUI and AppKey
+const char *appEui = "0000000000000000";
+const char *appKey = "00000000000000000000000000000000";
+
+#define loraSerial Serial1
+#define debugSerial Serial
+
+// Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
+#define freqPlan TTN_FP_US915
+
+TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
+
+#define Sensor A0
+const int Led = 13;
+
+void setup()
+{
+  pinMode(Led, OUTPUT);
+  
+  loraSerial.begin(57600);
+  debugSerial.begin(9600);
+
+  // Wait a maximum of 10s for Serial Monitor
+  while (!debugSerial && millis() < 10000);
+
+  // Set callback for incoming messages
+  ttn.onMessage(message);
+
+  debugSerial.println("-- STATUS");
+  ttn.showStatus();
+
+  debugSerial.println("-- JOIN");
+  ttn.join(appEui, appKey);
+}
+
+void loop()
+{
+  debugSerial.println("-- LOOP");
+
+  //-------------------------------------
+  // Sensor de temperatura
+
+  int ValorSensor = analogRead(Sensor);
+  int Temp = (ValorSensor*0.2027)-82;
+
+  Serial.print("Temperatura:");
+  Serial.print(Temp);
+  Serial.println("ºC");
+
+  byte payload[1];
+  payload[0] = Temp;
+
+  // Send it off
+  ttn.sendBytes(payload, sizeof(payload));
+
+  delay(10000);
+}
+
+void message(const byte *payload, size_t length, port_t port)
+{
+  debugSerial.println("-- MESSAGE");
+
+  // Only handle messages of a single byte
+  if (length != 1)
+  {
+    return;
+  }
+
+  if (payload[0] == 0)
+  {
+    debugSerial.println("LED: off");
+    digitalWrite(Led, LOW);
+  }
+  else if (payload[0] == 1)
+  {
+    debugSerial.println("LED: on");
+    digitalWrite(Led, HIGH);
+  }
+}
