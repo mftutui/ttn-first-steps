@@ -83,7 +83,7 @@ Na IDE vá até **Sketch** > **Incluir Biblioteca** > **Gerenciar Bibliotecas**,
 
 Em: **Arquivo** > **Exemplos** > **TheThingsNetwork** selecione **DeviceInfo**.
 
-> [DeviceInfo](https://github.com/mftutui/ttn-first-steps/codes/DeviceInfo.ino)
+> [Código DeviceInfo](https://github.com/mftutui/ttn-first-steps/blob/master/codes/DeviceInfo.ino)
 
 Esse código tem como função retornar iformações sobre o dispositivo, sendo uma delas o **Device EUI**
 
@@ -145,7 +145,7 @@ No console, junto às informações do device, no final da página estarão *app
 
 Não esqueça de substituir, assim como no código *DeviceInfo*, o plano de frequência utilizado. 
 
-> [QuickStart](https://github.com/mftutui/ttn-first-steps/codes/QuickStart.ino)
+> [Código QuickStart](https://github.com/mftutui/ttn-first-steps/blob/master/codes/QuickStart.ino)
 
 #### UPLINK
 
@@ -186,7 +186,7 @@ mantendo as demais linhas em *void loop()*
 
 A função *message* pode ser completamente comentada, ela será usada no DOWNLINK.
 
-> [Código UPLINK](https://github.com/mftutui/ttn-first-steps/codes/UPLINK.ino)
+> [Código UPLINK](https://github.com/mftutui/ttn-first-steps/blob/master/codes/UPLINK.ino)
 
 Procure em Ferramentas pela porta onde o dispositivo está conectado e selecione a placa "Arduino Leonardo". Em seguida carregue o código para a placa e assim que carregado abra o monitor serial para acompanhar.
 
@@ -249,7 +249,7 @@ digitalWrite(Led, HIGH);
 
 > LED_BUILTIN trata-se do próprio LED embutido na placa, ele pode ser usado se preferir
 
-> [Código DOWNLINK](https://github.com/mftutui/ttn-first-steps/codes/DOWNLINK.ino)
+> [Código DOWNLINK](https://github.com/mftutui/ttn-first-steps/blob/master/codes/DOWNLINK.ino)
 
 A mensagem de DOWNLINK pode ser enviada pelo console do device em *DOWNLINK* como na imagem.
 
