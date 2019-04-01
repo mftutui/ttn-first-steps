@@ -141,7 +141,7 @@ Na IDE, partindo do exemplo de código **QuickStart** que encontra-se em **Arqui
 
 No console, junto às informações do device, no final da página estarão *appEui* e *appKey*. Esses dois números deverão substituir as linhas 4 e 5 do exemplo **QuickStart**.
 
-![serial_join](https://github.com/mftutui/ttn-first-steps/blob/master/images/serial_join.png)
+![example_code](https://github.com/mftutui/ttn-first-steps/blob/master/images/example_code.png)
 
 Não esqueça de substituir, assim como no código *DeviceInfo*, o plano de frequência utilizado. 
 
