@@ -1,4 +1,9 @@
 # ttn-first-steps
+
+![logo](https://github.com/mftutui/configuracoes-gateway-ttn/blob/master/images/logo.png)
+
+Este tutorial foi produzido pelo **Instituto Federal de Santa Catarina (IFSC)** - Campus São José, juntamente com a **Fundação de Amparo à Pesquisa e Inovação do Estado de Santa Catarina (FAPESC)** a partir do projeto de pesquisa aplicada por meio do edital de chamada pública FAPESC - Nº 05/2017.
+
 Primeiros passos para o uso da plataforma The Things Network
 
 Este é um guia iniciante para o uso da TTN. Usando o módulo [The Things UNO](https://www.thethingsnetwork.org/docs/devices/uno/) será construido um dispositipo capaz de realizar UPLINK com um sensor de temperatura e DOWNLINK usando um LED.
